@@ -19,11 +19,17 @@ app.use(express.json());
 
 app.use(rateLimiter);
 
+app.get("/", (req, res) => {
+  res.send("Hello World");
+})
+
 app.use("/shorten",urlRoute);
 
 app.get('/:code',redirectURL); 
 
 app.get('/analytics/:code', handleGetAnalytics);
+
+
 
 // Health check endpoint for Docker
 app.get('/health', (req, res) => {
